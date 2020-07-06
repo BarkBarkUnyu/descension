@@ -17,7 +17,9 @@ class GameMap:
   def __init__(self, width: int, height: int, entities: Iterable[Entity] = ()):
     self.width, self.height = width, height
     self.entities = set(entities)
-    self.tiles = np.full((width, height), fill_value=tile_types.wall, order="F")
+    self.tiles = np.random.choice(
+      [tile_types.wall, tile_types.wall2, tile_types.wall3],
+      (width, height))
     
     # Tiles the player can currently see
     self.visible = np.full((width, height), fill_value=False, order="F")

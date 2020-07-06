@@ -1,4 +1,5 @@
 from typing import Tuple
+import random
 
 import numpy as np # type: ignore
 
@@ -37,13 +38,27 @@ SHROUD = np.array((ord(" "), (255, 255, 255), (0, 0, 0)), dtype=graphic_dt)
 floor = new_tile(
   walkable=True,
   transparent=True,
-  dark=(ord("."), (19, 19, 0), (7, 7, 0)),
+  dark=(ord("."), (11, 11, 0), (7, 7, 0)),
   light=(ord("."), (27, 27, 0), (11, 11, 0)),
 )
 
 wall = new_tile(
   walkable=False,
   transparent=False,
+  dark=(ord("#"), (19, 19, 0), (11, 11, 0)),
+  light=(ord("#"), (27, 27, 0), (19, 19, 0)),
+)
+
+wall2 = new_tile(
+  walkable=False,
+  transparent=False,
+  dark=(ord("#"), (24, 24, 0), (16, 16, 0)),
+  light=(ord("#"), (32, 32, 0), (24, 24, 0)),
+)
+
+wall3 = new_tile(
+  walkable=False,
+  transparent=False,
   dark=(ord("#"), (27, 27, 0), (19, 19, 0)),
-  light=(ord("#"), (35, 35, 7), (27, 27, 0)),
+  light=(ord("#"), (35, 35, 8), (27, 27, 0)),
 )
