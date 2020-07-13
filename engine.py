@@ -7,7 +7,7 @@ from tcod.map import compute_fov
 
 from input_handlers import MainGameEventHandler
 from message_log import MessageLog
-from render_functions import render_bar, render_names_at_mouse_location
+from render_functions import render_bar, render_names_at_mouse_location, render_ui_box
 
 if TYPE_CHECKING:
   from entity import Actor
@@ -47,7 +47,9 @@ class Engine:
   def render(self, console: Console) -> None:
     self.game_map.render(console)
 
-    self.message_log.render(console=console, x=21, y=45, width=40, height=5)
+    render_ui_box(console=console, engine=self)
+
+    self.message_log.render(console=console, x=23, y=45, width=75, height=3)
 
     render_bar(
       console=console,
@@ -56,4 +58,4 @@ class Engine:
       total_width=20,
     )
 
-    render_names_at_mouse_location(console=console, x=21, y=44, engine=self)
+    render_names_at_mouse_location(console=console, x=2, y=43, engine=self)

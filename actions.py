@@ -75,9 +75,9 @@ class MeleeAction(ActionWithDirection):
 
     attack_desc = f"{self.entity.name.capitalize()} attacks {target.name}"
     if self.entity is self.engine.player:
-      attack_color = color.player_atk
+      attack_color = color.ui_box_fg
     else:
-      attack_color = color.enemy_atk
+      attack_color = color.ui_box_fg
     
     if damage > 0:
       self.engine.message_log.add_message(

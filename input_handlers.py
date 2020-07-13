@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Optional, TYPE_CHECKING
 
 import tcod.event
+import color
 
 from actions import Action, BumpAction, EscapeAction, WaitAction
 
@@ -148,7 +149,7 @@ class HistoryViewer(EventHandler):
     log_console = tcod.Console(console.width - 6, console.height - 6)
 
     # Draw a frame with a custom banner title.
-    log_console.draw_frame(0, 0, log_console.width, log_console.height)
+    log_console.draw_frame(0, 0, log_console.width, log_console.height, "", True, color.message_log_fg, color.message_log_bg)
     log_console.print_box(
       0, 0, log_console.width, 1, "┤Message history├", alignment=tcod.CENTER
     )

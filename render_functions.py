@@ -26,15 +26,15 @@ def render_bar(
 ) -> None:
   bar_width = int(float(current_value) / maximum_value * total_width)
 
-  console.draw_rect(x=0, y=45, width=20, height=1, ch=1, bg=color.bar_empty)
+  console.draw_rect(x=2, y=46, width=20, height=1, ch=1, bg=color.hp_bar_empty)
 
   if bar_width > 0:
     console.draw_rect(
-      x=0, y=45, width=bar_width, height=1, ch=1, bg=color.bar_filled
+      x=2, y=46, width=bar_width, height=1, ch=1, bg=color.hp_bar_filled
     )
 
   console.print(
-    x=1, y=45, string=f"HP: {current_value}/{maximum_value}", fg=color.bar_text
+    x=3, y=46, string=f"HP: {current_value}/{maximum_value}", fg=color.ui_box_bg
   )
 
 def render_names_at_mouse_location(
@@ -46,4 +46,12 @@ def render_names_at_mouse_location(
     x=mouse_x, y=mouse_y, game_map=engine.game_map
   )
 
-  console.print(x=x, y=y, string=names_at_mouse_location)
+  console.print(x=x, y=y, string=names_at_mouse_location, fg=color.ui_box_fg)
+
+def render_ui_box(
+  console: Console, engine: Engine,
+) -> None:
+  console.draw_rect(x=1, y=44, width=98, height=5, ch=1, bg=color.ui_box_bg)
+  console.draw_frame(1, 44, 98, 5, "", True, color.ui_box_fg, color.ui_box_bg)
+  console.draw_rect(x=22, y=45, width=1, height=3, ch=9474, fg=color.ui_box_fg)
+  console.print(x=2, y=45, string=engine.player.name, fg=color.ui_box_fg)
