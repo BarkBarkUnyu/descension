@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import Optional, Tuple, TYPE_CHECKING
 
+import random
 import color
 
 if TYPE_CHECKING:
@@ -71,7 +72,7 @@ class MeleeAction(ActionWithDirection):
     if not target:
       return # No entity to attack.
 
-    damage = self.entity.fighter.power - target.fighter.defense
+    damage = int(random.randint(0, self.entity.fighter.power) - target.fighter.defense)
 
     attack_desc = f"{self.entity.name.capitalize()} attacks {target.name}"
     if self.entity is self.engine.player:
